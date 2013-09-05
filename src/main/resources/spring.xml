@@ -26,6 +26,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		p:location="/WEB-INF/classes/database.properties" />
 
+	<!-- On utilise le fichier propeties declaré au dessus -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" p:driverClassName="${jdbc.driverClassName}"
 		p:url="${jdbc.url}" p:username="${jdbc.username}" p:password="${jdbc.password}" />

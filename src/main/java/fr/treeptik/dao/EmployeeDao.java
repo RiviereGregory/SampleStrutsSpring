@@ -8,12 +8,14 @@ import org.springframework.data.repository.query.Param;
 
 import fr.treeptik.entity.Employee;
 
-public interface EmployeeDao  extends JpaRepository<Employee, Integer>{
-    
-    @Query("select e from Employee e where e.email=:email")
-    public Employee findOneByEmail(@Param("email") String email);
+// On a que des interfaces car on utilise spring data qui permet de faire les class automatiquement on ajoute que les signature avec les requetes autre que le crud qui sont déjà dans le model
+public interface EmployeeDao extends JpaRepository<Employee, Integer> {
 
-    @Query("select e from Employee e where e.lastname=:lastname")
-    public List<Employee> findAllByLastname(@Param("lastname") String lastname);
-    
+	// On met les requetes directement
+	@Query("select e from Employee e where e.email=:email")
+	public Employee findOneByEmail(@Param("email") String email);
+
+	@Query("select e from Employee e where e.lastname=:lastname")
+	public List<Employee> findAllByLastname(@Param("lastname") String lastname);
+
 }

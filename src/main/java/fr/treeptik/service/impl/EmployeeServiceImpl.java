@@ -12,33 +12,30 @@ import fr.treeptik.service.EmployeeService;
 
 @Service(value = "employeeManager")
 public class EmployeeServiceImpl implements EmployeeService {
-    
-    
-    @Autowired
-    private EmployeeDao employeeDao;
 
-    @Override
-    @Transactional
-    public void add(Employee employee) {
-        employeeDao.save(employee);
-    }
+	@Autowired
+	private EmployeeDao employeeDao;
 
-    @Override
-    @Transactional
-    public List<Employee> getAll() {
-        return employeeDao.findAll();
-    }
+	@Override
+	@Transactional
+	public void add(Employee employee) {
+		employeeDao.save(employee);
+	}
 
-    @Override
-    @Transactional
-    public Employee get(Integer id) {
-        return employeeDao.findOne(id);
-    }
+	@Override
+	public List<Employee> getAll() {
+		return employeeDao.findAll();
+	}
 
-    @Override
-    @Transactional
-    public void delete(Integer employeeId) {
-        employeeDao.delete(employeeId);
-    }
-    
+	@Override
+	public Employee get(Integer id) {
+		return employeeDao.findOne(id);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Integer employeeId) {
+		employeeDao.delete(employeeId);
+	}
+
 }

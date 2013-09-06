@@ -1,30 +1,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Available actions</h1>
-        <a href="pages/AddEmployee.jsp">Add Employee</a>
-        
-        <h1>Locale</h1>
-        
-        <s:url id="localeEN" namespace="/" action="locale" >
-            <s:param name="request_locale" >en</s:param>
-        </s:url>
-        <s:url id="localeFR" namespace="/" action="locale" >
-            <s:param name="request_locale" >fr</s:param>
-        </s:url>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSP Page</title>
+</head>
+<body>
+	<h1>Employee</h1>
+	<s:a href="employee/add.jsp">Add Employee</s:a>
+	<s:a href="employee/listAction.action">List Employee</s:a>
 
-        <s:a href="%{localeEN}" >English</s:a>
-        <s:a href="%{localeFR}" >French</s:a>
-        
-        <h2>Message</h2>
-        
-        <s:text name="test.message" />
-        
-    </body>
+	<h1>Produit</h1>
+	<s:a href="product/add.jsp">Add Produit</s:a>
+	<s:a href="product/listAction.action">List Produit</s:a>
+
+</body>
 </html>

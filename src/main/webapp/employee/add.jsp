@@ -16,12 +16,16 @@
 	<!-- On recupére directement les propriétés du model grace au modelDriven -->
 	<!-- Si on a plusieurs model on utilise pas le modelDriven et on met employee.firstname directement -->
 	<s:form action="addAction">
+		<!-- Permet de faire le update -->
+		<s:hidden name="id"></s:hidden>
+		
 		<s:textfield name="firstname" label="First Name" />
 		<s:textfield name="lastname" label="Last Name" />
 		<s:textfield name="email" label="Email" />
 		<s:textfield name="telephone" label="Telephone" />
 		<s:submit />
 	</s:form>
+	<s:a href="../index.jsp">Index</s:a>
 
 
 

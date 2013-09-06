@@ -33,6 +33,8 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	private Employee employee = new Employee();
 	private List<Employee> employees = new ArrayList<>();
 
+	private Integer idToDelete;
+
 	// On choisi le model que l'on veut dans les pages du formulaire
 	@Override
 	public Employee getModel() {
@@ -45,6 +47,14 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 
 		if (getEmployee().getFirstname().trim().length() == 0) {
 			addFieldError("firstname", "First name is required.");
+		}
+		if (getEmployee().getLastname().trim().length() == 0) {
+			addFieldError("lastname", "last name is required.");
+		}
+
+		// Permet de tester l'expression de l'email
+		if (!getEmployee().getEmail().matches("(.*)@(.*)")) {
+			addFieldError("email", "Entrer un email valide");
 		}
 
 	}
@@ -73,6 +83,23 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 		return "success";
 	}
 
+	@Action(value = "suppAction", results = { @Result(name = "success", type = "redirectAction", location = "listAction.action") })
+	@SkipValidation
+	public String suppEmployee() throws Exception {
+		System.out.println("DELETE ID : " + idToDelete);
+		employeeService.delete(idToDelete);
+
+		return "success";
+	}
+
+	@Action(value = "modifAction", results = { @Result(name = "success", location = "/employee/add.jsp") })
+	@SkipValidation
+	public String modifEmployee() throws Exception {
+		System.out.println("Employee : " + employee);
+
+		return "success";
+	}
+
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -87,6 +114,14 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+
+	public Integer getIdToDelete() {
+		return idToDelete;
+	}
+
+	public void setIdToDelete(Integer idToDelete) {
+		this.idToDelete = idToDelete;
 	}
 
 }

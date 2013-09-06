@@ -101,11 +101,13 @@ public class CommandeAction extends ActionSupport {
 		return "success";
 	}
 
-	@Action(value = "modifAction", results = { @Result(name = "success",  location = "/commande/add.jsp") })
+	@Action(value = "modifAction", results = { @Result(name = "success", location = "/commande/add.jsp") })
 	@SkipValidation
 	public String modifCommande() throws Exception {
 		System.out.println("Commande : " + commande);
 
+		commande = commandeService.get(commande.getId());
+		
 		employees = new HashMap<>();
 		products = new HashMap<>();
 
@@ -118,7 +120,7 @@ public class CommandeAction extends ActionSupport {
 		for (Product product : listProducts) {
 			products.put(product.getId(), product.toString());
 		}
-		
+
 		return "success";
 	}
 

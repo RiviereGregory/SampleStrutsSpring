@@ -15,5 +15,9 @@
 	<s:a href="product/add.jsp">Add Produit</s:a>
 	<s:a href="product/listAction.action">List Produit</s:a>
 
+	<h1>Commande</h1>
+	<s:a href="commande/initAction.action">Add Produit</s:a>
+	<s:a href="commande/listAction.action">List Produit</s:a>
+
 </body>
 </html>
